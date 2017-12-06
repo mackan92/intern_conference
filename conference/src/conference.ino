@@ -5,11 +5,10 @@
  * Date:
  */
 
-#include <neopixel.h>
+#include <Adafruit_NeoPixel.h>
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
-#include <neopixel.h>
 #ifndef PSTR
 #define PSTR // Make Arduino Due happy
 #endif
@@ -55,7 +54,7 @@ void loop() {
   // The core of your code will likely live here.
   matrix.fillScreen(0);
   matrix.setCursor(x, 0);
-  matrix.print(F(“HI, RYAN.  THIS IS A NEOPIXEL BOARD”));
+  matrix.print(F("HI, RYAN.  THIS IS A NEOPIXEL BOARD"));
   if(–x < -220) {
   x = matrix.width();
   if(++pass >= 3) pass = 0;
