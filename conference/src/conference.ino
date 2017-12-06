@@ -9,7 +9,7 @@
 
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
-#include <Adafruit_NeoPixel.h>
+#include <neopixel.h>
 #ifndef PSTR
 #define PSTR // Make Arduino Due happy
 #endif

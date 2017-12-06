@@ -22,7 +22,7 @@ See notes at end for glyph nomenclature & other tidbits.
 #include <stdint.h>
 #include <ft2build.h>
 #include FT_GLYPH_H
-#include "../gfxfont.h" // Adafruit_GFX font structures
+#include "gfxfont.h" // Adafruit_GFX font structures
 
 #define DPI 141 // Approximate res. of Adafruit 2.8" TFT
 
@@ -106,7 +106,7 @@ int main(int argc, char *argv[]) {
 	// Insert font size and 7/8 bit.  fontName was alloc'd w/extra
 	// space to allow this, we're not sprintfing into Forbidden Zone.
 	sprintf(ptr, "%dpt%db", size, (last > 127) ? 8 : 7);
-	// Space and punctuation chars in name replaced w/ underscores.  
+	// Space and punctuation chars in name replaced w/ underscores.
 	for(i=0; (c=fontName[i]); i++) {
 		if(isspace(c) || ispunct(c)) fontName[i] = '_';
 	}

@@ -26,7 +26,7 @@
  #include <pins_arduino.h>
 #endif
 #include <Adafruit_GFX.h>
-#include <Adafruit_NeoPixel.h>
+#include <neopixel.h>
 
 // Matrix layout information is passed in the 'matrixType' parameter for
 // each constructor (the parameter immediately following is the LED type
