@@ -10,6 +10,10 @@
 #define PIXEL_PIN A1
 #define PIXEL_COUNT 64
 #define PIXEL_TYPE WS2812B
+#define powerPin 6
+#define directionPin 5
+bool currentPower = HIGH;
+bool currentDirection = HIGH;
 
 Adafruit_NeoPixel pixel = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
 
@@ -19,8 +23,15 @@ void setup() {
   // Put initialization like pinMode and begin functions here.
 
     pinMode(PIXEL_PIN, OUTPUT);
+    pinMode(powerPin, OUTPUT);
+    pinMode(directionPin, OUTPUT);
+    digitalWrite(powerPin, HIGH);
+    digitalWrite(directionPin, HIGH);
+
 
     Particle.function("LED",toggle);
+    Particle.function("swapDir", setDir);
+    Particle.function("swapPwr", setPwr);
 
     pixel.begin();
 
@@ -55,4 +66,15 @@ int toggle(String command) {
   } else {
     return -1;
   }
+}
+
+int setDir(String command) {
+  currentDirection = !currentDirection;
+  digitalWrite(directionPin, currentDirection);
+  return 1;
+}
+int setPwr(String command) {
+  currentPower = !currentPower;
+  digitalWrite(powerPin, currentPower);
+  return 1;
 }
