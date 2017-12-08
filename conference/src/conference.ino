@@ -11,6 +11,9 @@
 #define PIXEL_COUNT 64
 #define PIXEL_TYPE WS2812B
 
+#define stepPin 3
+#define dirPin 4
+
 Adafruit_NeoPixel pixel = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
 
 
@@ -19,6 +22,8 @@ void setup() {
   // Put initialization like pinMode and begin functions here.
 
     pinMode(PIXEL_PIN, OUTPUT);
+    pinMode(stepPin, OUTPUT);
+    pinMode(dirPin, OUTPUT);
 
     Particle.function("LED",toggle);
 
@@ -34,7 +39,14 @@ void setup() {
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-  // The core of your code will likely live here.
+  digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
+  // Makes 200 pulses for making one full cycle rotation
+  for(int x = 0; x < 200; x++) {
+    digitalWrite(stepPin,HIGH);
+    delayMicroseconds(7000);
+    digitalWrite(stepPin,LOW);
+    delayMicroseconds(7000);
+  }
 }
 
 int toggle(String command) {
