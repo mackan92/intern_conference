@@ -29,14 +29,14 @@ void setup() {
     digitalWrite(directionPin, HIGH);
 
 
-    Particle.function("LED",toggle);
+    Particle.function("setColor",setColor);
     Particle.function("swapDir", setDir);
     Particle.function("swapPwr", setPwr);
 
     pixel.begin();
 
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(100,0,255));
+      pixel.setPixelColor(i, pixel.Color(50,0,50));
     }
 
     pixel.show();
@@ -48,21 +48,55 @@ void loop() {
   // The core of your code will likely live here.
 }
 
-int toggle(String command) {
-
-  if (command=="on") {
+int setColor(String command) {
+  if (command == "red") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(100,100,255));
+      pixel.setPixelColor(i, pixel.Color(100,0,0));
+      pixel.show();
     }
-
-    pixel.show();
     return 1;
-  } else if (command=="off") {
+  } else if (command == "green") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,255,0));
+      pixel.setPixelColor(i, pixel.Color(0,100,0));
+      pixel.show();
     }
-    pixel.show();
-    return 0;
+    return 1;
+  } else if (command == "blue") {
+    for(int i = 0; i<PIXEL_COUNT; i++){
+      pixel.setPixelColor(i, pixel.Color(0,0,100));
+      pixel.show();
+    }
+    return 1;
+  } else if (command == "cyan") {
+    for(int i = 0; i<PIXEL_COUNT; i++){
+      pixel.setPixelColor(i, pixel.Color(0,50,50));
+      pixel.show();
+    }
+    return 1;
+  } else if (command == "magenta") {
+    for(int i = 0; i<PIXEL_COUNT; i++){
+      pixel.setPixelColor(i, pixel.Color(50,0,50));
+      pixel.show();
+    }
+    return 1;
+  } else if (command == "yellow") {
+    for(int i = 0; i<PIXEL_COUNT; i++){
+      pixel.setPixelColor(i, pixel.Color(50,50,0));
+      pixel.show();
+    }
+    return 1;
+  } else if (command == "white") {
+    for(int i = 0; i<PIXEL_COUNT; i++){
+      pixel.setPixelColor(i, pixel.Color(33,33,33));
+      pixel.show();
+    }
+    return 1;
+  } else if (command == "black") {
+    for(int i = 0; i<PIXEL_COUNT; i++){
+      pixel.setPixelColor(i, pixel.Color(0,0,0));
+      pixel.show();
+    }
+    return 1;
   } else {
     return -1;
   }
