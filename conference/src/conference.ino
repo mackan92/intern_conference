@@ -17,6 +17,7 @@ SYSTEM_MODE(SEMI_AUTOMATIC);
 
 bool currentPower = HIGH;
 bool currentDirection = HIGH;
+int b = 100; // brightness, max is 255
 
 Adafruit_NeoPixel pixel = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
 
@@ -34,6 +35,7 @@ void setup() {
     WiFi.on();
     WiFi.setCredentials("Talkative Guest", "joeyalexander03");
     WiFi.setCredentials("jennyPhone19", "7s429xvvvoqgw");
+    Particle.connect();
 
 
     Particle.function("setColor",setColor);
@@ -43,7 +45,7 @@ void setup() {
     pixel.begin();
 
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(50,0,50));
+      pixel.setPixelColor(i, pixel.Color(b/2,0,b/2));
     }
 
     pixel.show();
@@ -58,43 +60,43 @@ void loop() {
 int setColor(String command) {
   if (command == "red") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(100,0,0));
+      pixel.setPixelColor(i, pixel.Color(b,0,0));
       pixel.show();
     }
     return 1;
   } else if (command == "green") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,100,0));
+      pixel.setPixelColor(i, pixel.Color(0,b,0));
       pixel.show();
     }
     return 1;
   } else if (command == "blue") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,0,100));
+      pixel.setPixelColor(i, pixel.Color(0,0,b));
       pixel.show();
     }
     return 1;
   } else if (command == "cyan") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,50,50));
+      pixel.setPixelColor(i, pixel.Color(0,b/2,b/2));
       pixel.show();
     }
     return 1;
   } else if (command == "magenta") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(50,0,50));
+      pixel.setPixelColor(i, pixel.Color(b/2,0,b/2));
       pixel.show();
     }
     return 1;
   } else if (command == "yellow") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(50,50,0));
+      pixel.setPixelColor(i, pixel.Color(b/2,b/2,0));
       pixel.show();
     }
     return 1;
   } else if (command == "white") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(33,33,33));
+      pixel.setPixelColor(i, pixel.Color(b/3,b/3,b/3));
       pixel.show();
     }
     return 1;
