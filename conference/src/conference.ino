@@ -12,6 +12,9 @@
 #define PIXEL_TYPE WS2812B
 #define powerPin 6
 #define directionPin 5
+
+SYSTEM_MODE(SEMI_AUTOMATIC);
+
 bool currentPower = HIGH;
 bool currentDirection = HIGH;
 
@@ -27,6 +30,10 @@ void setup() {
     pinMode(directionPin, OUTPUT);
     digitalWrite(powerPin, HIGH);
     digitalWrite(directionPin, HIGH);
+    
+    WiFi.on();
+    WiFi.setCredentials("Talkative Guest", "joeyalexander03");
+    WiFi.setCredentials("jennyPhone19", "7s429xvvvoqgw");
 
 
     Particle.function("setColor",setColor);
