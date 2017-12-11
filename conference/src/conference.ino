@@ -45,7 +45,7 @@ void setup() {
     pixel.begin();
 
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(b/2,0,b/2));
+      pixel.setPixelColor(i, pixel.Color(255,0,255));
     }
 
     pixel.show();
@@ -60,43 +60,43 @@ void loop() {
 int setColor(String command) {
   if (command == "red") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(b,0,0));
+      pixel.setPixelColor(i, pixel.Color(255,0,0));
       pixel.show();
     }
     return 1;
   } else if (command == "green") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,b,0));
+      pixel.setPixelColor(i, pixel.Color(0,255,0));
       pixel.show();
     }
     return 1;
   } else if (command == "blue") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,0,b));
+      pixel.setPixelColor(i, pixel.Color(0,0,255));
       pixel.show();
     }
     return 1;
   } else if (command == "cyan") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(0,b/2,b/2));
+      pixel.setPixelColor(i, pixel.Color(0,255,255));
       pixel.show();
     }
     return 1;
   } else if (command == "magenta") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(b/2,0,b/2));
+      pixel.setPixelColor(i, pixel.Color(255,0,255));
       pixel.show();
     }
     return 1;
   } else if (command == "yellow") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(b/2,b/2,0));
+      pixel.setPixelColor(i, pixel.Color(255,255,0));
       pixel.show();
     }
     return 1;
   } else if (command == "white") {
     for(int i = 0; i<PIXEL_COUNT; i++){
-      pixel.setPixelColor(i, pixel.Color(b/3,b/3,b/3));
+      pixel.setPixelColor(i, pixel.Color(255,255,255));
       pixel.show();
     }
     return 1;
