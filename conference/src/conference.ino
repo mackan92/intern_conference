@@ -37,11 +37,6 @@ void setup() {
     WiFi.setCredentials("jennyPhone19", "7s429xvvvoqgw");
     Particle.connect();
 
-
-    Particle.function("setColor",setColor);
-    Particle.function("swapDir", setDir);
-    Particle.function("swapPwr", setPwr);
-
     pixel.begin();
 
     for(int i = 0; i<PIXEL_COUNT; i++){
@@ -50,6 +45,9 @@ void setup() {
 
     pixel.show();
 
+    Particle.function("setColor",setColor);
+    Particle.function("swapDir", setDir);
+    Particle.function("swapPwr", setPwr);
 }
 
 // loop() runs over and over again, as quickly as it can execute.
