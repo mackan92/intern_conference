@@ -32,11 +32,6 @@ void setup() {
     digitalWrite(powerPin, HIGH);
     digitalWrite(directionPin, HIGH);
     
-    WiFi.on();
-    WiFi.setCredentials("Talkative Guest", "joeyalexander03");
-    WiFi.setCredentials("jennyPhone19", "7s429xvvvoqgw");
-    Particle.connect();
-
     pixel.begin();
 
     for(int i = 0; i<PIXEL_COUNT; i++){
@@ -44,6 +39,11 @@ void setup() {
     }
 
     pixel.show();
+
+    WiFi.on();
+    WiFi.setCredentials("Talkative Guest", "joeyalexander03");
+    WiFi.setCredentials("jennyPhone19", "7s429xvvvoqgw");
+    Particle.connect();
 
     Particle.function("setColor",setColor);
     Particle.function("swapDir", setDir);
